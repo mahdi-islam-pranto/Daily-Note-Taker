@@ -1,4 +1,4 @@
-import 'package:daily_note/homepage.dart';
+import 'package:daily_note/pages/homepage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
