@@ -1,3 +1,4 @@
+import 'package:daily_note/pages/ticketList.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,14 +30,25 @@ class _HomePageState extends State<HomePage> {
       ),
       drawer: Drawer(
         child: ListView(children: [
-          ListTile(title: Text("First Item")),
+          TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TicketList(),
+                    ));
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text("Ticket list"),
+              )),
           ListTile(title: Text("First Item")),
           ListTile(title: Text("First Item")),
           DropdownButton(
             autofocus: false,
             // Initial Value
             value: dropdownvalue,
-            
+
             // Down Arrow Icon
             icon: const Icon(Icons.keyboard_arrow_down),
 
