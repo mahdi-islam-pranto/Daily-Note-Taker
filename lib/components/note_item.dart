@@ -28,11 +28,21 @@ class NoteItem extends StatelessWidget {
           child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Note title"),
+              Row(
+                children: [
+                  Text("Note title"),
+                ],
+              ),
               Text("Here is the Note Description ........")
             ],
           ),
-        )
+        ),
+
+        //time
+        Container(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [Text("12:30 pm")]))
       ]),
     );
   }
