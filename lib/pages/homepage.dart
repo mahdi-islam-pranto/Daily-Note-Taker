@@ -1,4 +1,4 @@
-import 'package:daily_note/pages/ticketList.dart';
+import 'package:daily_note/components/note_item.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,70 +9,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // Initial Selected Value
-  String dropdownvalue = 'Login';
-
-  // List of items in our dropdown menu
-  var items = [
-    'Login',
-    'Prayer',
-    'Lunch Break',
-    'Short Break',
-    'Office Time Over',
-    'Meeting',
-    'Available',
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Test"),
-      ),
-      drawer: Drawer(
-        child: ListView(children: [
-          TextButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => TicketList(),
-                    ));
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text("Ticket list"),
-              )),
-          ListTile(title: Text("First Item")),
-          ListTile(title: Text("First Item")),
-          DropdownButton(
-            autofocus: false,
-            // Initial Value
-            value: dropdownvalue,
-
-            // Down Arrow Icon
-            icon: const Icon(Icons.keyboard_arrow_down),
-
-            // Array list of items
-            items: items.map((String items) {
-              return DropdownMenuItem(
-                value: items,
-                child: Text(items),
-              );
-            }).toList(),
-            // After selecting the desired option,it will
-            // change button value to selected value
-            onChanged: (String? newValue) {
-              setState(() {
-                dropdownvalue = newValue!;
-              });
-            },
-          ),
-        ]),
-      ),
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Text("data"),
-      ),
-    );
+        appBar: AppBar(
+          title: const Text("Daily Notes"),
+        ),
+        drawer: Drawer(
+          child: ListView(children: const [
+            ListTile(title: Text("First Item")),
+            ListTile(title: Text("First Item")),
+          ]),
+        ),
+        backgroundColor: Colors.white,
+        body: ListView(
+          children: const <Widget>[NoteItem(), NoteItem(), NoteItem()],
+        ));
   }
 }
