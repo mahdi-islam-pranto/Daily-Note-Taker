@@ -6,7 +6,7 @@ class NoteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 3),
+      margin: const EdgeInsets.symmetric(vertical: 7),
       child: Row(children: [
         //calander date
         Container(
@@ -42,9 +42,13 @@ class NoteItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "Note title",
-                    style: Theme.of(context).textTheme.titleMedium,
+                  Expanded(
+                    child: Text(
+                      "Note title haiuhiua iuabhdfubhaiufb oiahfiuahiuf",
+                      style: Theme.of(context).textTheme.titleMedium,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                   Text(
                     "12:30 pm",
@@ -52,7 +56,11 @@ class NoteItem extends StatelessWidget {
                   )
                 ],
               ),
-              const Text("Here is the Note Description ........")
+              const Text(
+                "Note Description ahiudhuahiudh iuabhdgiudhuiubiuhb iuabdiuad haiuhiua iuabhdfubhaiufb oiahfiuahiuf",
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              )
             ],
           ),
         ),
