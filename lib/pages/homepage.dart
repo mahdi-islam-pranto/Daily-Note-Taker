@@ -1,4 +1,5 @@
 import 'package:daily_note/components/note_item.dart';
+import 'package:daily_note/database/sqlite_service.dart';
 import 'package:daily_note/pages/add_note.dart';
 import 'package:flutter/material.dart';
 
@@ -23,22 +24,34 @@ class _HomePageState extends State<HomePage> {
         ]),
       ),
       backgroundColor: Colors.white,
-      body: ListView(
-        padding: EdgeInsets.all(15),
-        children: const <Widget>[
-          NoteItem(),
-          SizedBox(height: 10),
-          NoteItem(),
-          SizedBox(height: 10),
-          NoteItem(),
-          SizedBox(height: 10),
-        ],
+      body: FutureBuilder(
+        future: NoteRepo().getNotes(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.data == null || snapshot.data!.isEmpty) {
+              return const Center(
+                child: Text("No Notes Created"),
+              );
+            }
+            return ListView(
+              padding: const EdgeInsets.all(15),
+              children: [
+                for (var note in snapshot.data!)
+                  const NoteItem(
+                    note: note,
+                  )
+              ],
+            );
+          }
+
+          return const SizedBox();
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(
             builder: (context) {
-              return AddNote();
+              return const AddNote();
             },
           ));
         },

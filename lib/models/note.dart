@@ -1,11 +1,19 @@
-class Dog {
-  final int id;
-  final String name;
-  final int age;
+class Note {
+  int? id;
+  String title, description;
+  DateTime createdAt;
 
-  const Dog({
-    required this.id,
-    required this.name,
-    required this.age,
-  });
+  Note(
+      {this.id,
+      required this.title,
+      required this.description,
+      required this.createdAt});
+
+  Map<String, Object?> toMap() {
+    return {
+      'title': title,
+      'description': description,
+      'createdAt': createdAt.toString()
+    };
+  }
 }

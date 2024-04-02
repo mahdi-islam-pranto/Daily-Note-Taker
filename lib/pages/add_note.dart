@@ -1,3 +1,5 @@
+import 'package:daily_note/database/sqlite_service.dart';
+import 'package:daily_note/models/note.dart';
 import 'package:flutter/material.dart';
 
 class AddNote extends StatefulWidget {
@@ -17,7 +19,7 @@ class _AddNoteState extends State<AddNote> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: IconButton(
-            onPressed: () {},
+            onPressed: _insertNote,
             icon: const Icon(Icons.done),
           ),
         )
@@ -50,5 +52,14 @@ class _AddNoteState extends State<AddNote> {
         ),
       ),
     );
+  }
+
+  _insertNote() async {
+    final note = Note(
+        title: _title.text,
+        description: _description.text,
+        createdAt: DateTime.now());
+    await NoteRepo().insert(note: note);
+    print(await _description);
   }
 }
