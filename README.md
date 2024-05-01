@@ -1,5 +1,6 @@
 # daily_note
-
+## Note-taking App
+## SQLFlite
 A new Flutter project.
 
 ## Will update the readme later ...
